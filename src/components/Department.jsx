@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Table } from "react-boostrap";
+import Table from 'react-bootstrap/Table';
 
 export class Department extends Component {
   constructor(prop) {
     super(prop);
-    this.state = { deps: [] };
+    this.state = { deps : [] };
   }
   componentDidMount() {
     this.refreshList();
@@ -28,7 +28,7 @@ export class Department extends Component {
           </tr>
         </thead>
         <tbody>
-          {deps.map((dep) => (
+          {this.state.deps.map((dep) => (
             <tr key={dep.DepartmentID}>
               <td>{dep.DepartmentID}</td>
             </tr>
