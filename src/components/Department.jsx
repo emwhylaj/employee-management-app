@@ -1,11 +1,41 @@
 import React, { Component } from "react";
+import { Table } from "react-boostrap";
 
 export class Department extends Component {
+  constructor(prop) {
+    super(prop);
+    this.state = { deps: [] };
+  }
+  componentDidMount() {
+    this.refreshList();
+  }
+
+  refreshList() {
+    this.setState({
+      deps: [
+        { DepartmentID: 1, Department: "IT" },
+        { DepartmentID: 2, DepartmentName: "Account" },
+      ],
+    });
+  }
   render() {
     return (
-      <div>
-        <h3>I am the department page</h3>
-      </div>
+      <Table className="mt-4" striped bordered hover size="sm">
+        <thead>
+          <tr>
+            <th>DepartmentID</th>
+            <th>DepartmentName</th>
+          </tr>
+        </thead>
+        <tbody>
+          {deps.map((dep) => (
+            <tr key={dep.DepartmentID}>
+              <td>{dep.DepartmentID}</td>
+            </tr>
+          ))}
+          ;
+        </tbody>
+      </Table>
     );
   }
 }
