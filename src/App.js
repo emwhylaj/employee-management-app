@@ -21,6 +21,7 @@ function App() {
           <Route path="/" component={Employee} />
           <Route path="/" component={Department} />
         </Switch>
+        <Department/>
       </div>
     </BrowserRouter>
   );

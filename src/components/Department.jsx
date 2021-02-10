@@ -1,24 +1,23 @@
 import React, { Component } from "react";
-import Table from 'react-bootstrap/Table';
+import Table from "react-bootstrap/Table";
 
 export class Department extends Component {
-  constructor(prop) {
-    super(prop);
-    this.state = { deps : [] };
+  constructor(props) {
+    super(props);
+    this.state = { deps: [] };
   }
   componentDidMount() {
     this.refreshList();
   }
 
   refreshList() {
-    this.setState({
-      deps: [
-        { DepartmentID: 1, Department: "IT" },
-        { DepartmentID: 2, DepartmentName: "Account" },
-      ],
-    });
+    fetch('https://localhost:44378/api/department').then(response => response.json()
+    .then(data => {
+      this.setState({ deps: data });
+    }))
   }
   render() {
+    const { deps } = this.state;
     return (
       <Table className="mt-4" striped bordered hover size="sm">
         <thead>
@@ -28,12 +27,12 @@ export class Department extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.deps.map((dep) => (
+          {deps.map((dep) => (
             <tr key={dep.DepartmentID}>
               <td>{dep.DepartmentID}</td>
+              <td>{dep.DepartmentName}</td>
             </tr>
           ))}
-          ;
         </tbody>
       </Table>
     );
