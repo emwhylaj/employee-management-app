@@ -18,10 +18,10 @@ function App() {
         <Navigation />
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/" component={Employee} />
-          <Route path="/" component={Department} />
+          <Route path="/employee" component={Employee} />
+          <Route path="/department" component={Department} />
         </Switch>
-        <Department/>
+        {/* <Department/> */}
       </div>
     </BrowserRouter>
   );
